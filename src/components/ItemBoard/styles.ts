@@ -7,13 +7,12 @@ interface IContainerProps {
 export const Container = styled.div<IContainerProps>`
   width: 25px;
   height: 25px;
-  /* backgroundColor: grid[indexRow][indexColumn] ? "blue" : undefined, */
   border: solid 1px black;
   margin: 0.5;
 
   ${(props) =>
     props.isPaint &&
     css`
-      background-color: blue;
+      background-color: #ffd942;
     `}
 `;

@@ -10,7 +10,7 @@ interface IBoardProps {
 
 export const Grid = styled.div<IBoardProps>`
     display: grid;
-    background-color: coral;
+    background-color: white;
     width: ${props => props.width}px;
     height: ${props => props.height}px;
     grid-template-columns: repeat(${props => props.numberOfColumns}, ${props => props.sizeItemBoard}px);
@@ -20,4 +20,5 @@ export const Grid = styled.div<IBoardProps>`
 export const Container = styled.div`
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 `; 

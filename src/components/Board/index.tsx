@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import ItemBoard from "../ItemBoard";
 import { Container, Grid } from "./styles";
 import { create2DArray, copyGrid } from "../../utils";
+import { useGame } from "../../hooks/game";
 
 const Board: React.FC = ({ children }) => {
   const width = 1400;
@@ -9,12 +10,13 @@ const Board: React.FC = ({ children }) => {
   const sizeItemBoard = 25;
   const numberOfRows = height / sizeItemBoard;
   const numberOfColumns = width / sizeItemBoard;
-
   const [grid, setGrid] = useState(() => {
     return create2DArray(numberOfRows, numberOfColumns);
   });
 
   const [running, setRunning] = useState(false);
+  const { isStarted } = useGame();
+
 
   const countNeighbors = useCallback((
     grid: Array<any>,
@@ -22,26 +24,18 @@ const Board: React.FC = ({ children }) => {
     indexColumn: number
   ) => {
     let sum = 0;
-    for (
-      let indexRowNeighbor = -1;
-      indexRowNeighbor < 2;
-      indexRowNeighbor++
-    ) {
-      for (
-        let indexColumnNeighbor = -1;
-        indexColumnNeighbor < 2;
-        indexColumnNeighbor++
-      ) {
-        if (
-          indexRow + indexRowNeighbor >= 0 &&
+    for (let indexRowNeighbor = -1; indexRowNeighbor < 2;
+          indexRowNeighbor++) {
+      for (let indexColumnNeighbor = -1; indexColumnNeighbor < 2;
+          indexColumnNeighbor++) {
+        if (indexRow + indexRowNeighbor >= 0 &&
           indexRow + indexRowNeighbor < numberOfRows &&
           indexColumn + indexColumnNeighbor >= 0 &&
           indexColumn + indexColumnNeighbor < numberOfColumns
         ) {
-          sum +=
-            grid[indexRow + indexRowNeighbor][
+          sum += grid[indexRow + indexRowNeighbor][
               indexColumn + indexColumnNeighbor
-            ];
+          ];
         }
       }
     }
@@ -67,11 +61,11 @@ const Board: React.FC = ({ children }) => {
   }, [grid, countNeighbors, numberOfRows, numberOfColumns]);
 
   useEffect(() => {
-    if (running) {
+    if (isStarted) {
       const intervalId = setInterval(runSimulation, 100)
       return () => clearInterval(intervalId);
     }
-  }, [running, runSimulation])
+  }, [isStarted, runSimulation])
 
 
   const handleCellGridClick = (indexRow: number, indexColumn: number) => {
@@ -101,13 +95,6 @@ const Board: React.FC = ({ children }) => {
           )}
         </Grid>
       </Container>
-      <button
-        onClick={() => {
-          setRunning(!running);
-        }}
-      >
-        {running ? "stop" : "start"}
-      </button>
     </>
   );
 };
