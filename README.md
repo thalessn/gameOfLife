@@ -1,8 +1,9 @@
 # Jogo da Vida
 
-#####imagem do jogo
+![image_game](https://github.com/thalessn/gameOfLife/blob/main/game.gif?raw=true)
 
-Projeto criado com o 
+Este jogo foi desenvolvido utilizando as bibliotecas [React](https://reactjs.org/) e [StyledComponents](https://styled-components.com/).
+
 
 ## História
 
@@ -23,38 +24,34 @@ As regras são simples:
 
 #### - Demo Online
 
-Colocar o link
+Inserir link
 
 #### - Localmente
 
-Clone o projeto em sua máquina, e execute o seguinte comando na pasta do projeto (Ao iniciar pela primeira vez):
+Clone o projeto em sua máquina, e execute o seguinte comando na pasta do projeto (Ao iniciar pela primeira vez para baixar as dependências):
 
 ```
  npm install
 ```
 
-O comando acima irá baixar as dependências necessárias para a execução do jogo.
-
-Depois para iniciar o projeto, execute o comando
+Para iniciar o projeto, execute o comando:
 
 ```
  npm start
 ```
 
-Se caso você venha utilizar o gerenciador de Pacotes **Yarn**, basta alterar para os comandos:
+Se caso você venha utilizar o gerenciador de Pacotes **Yarn**, basta alterar os comandos anteriores para:
 
 ```
  yarn
  yarn start
 ```
 
-Ao executar os comandos acima será aberto uma janela no navagador padrão no link [http://localhost:3000](http://localhost:3000) 
+Ao executar os comandos acima, será aberto uma janela no navagador padrão com o link [http://localhost:3000](http://localhost:3000), onde o jogo poderá ser acessado.
 
 
 ### Créditos
  - Ben Awad, pelo css utilizado na grid, abordado em seu canal no [Youtube](https://www.youtube.com/watch?v=DvVt11mPuM0).
 
  - UIGradients, degradê [Cool Blues](https://uigradients.com/#CoolBlues) utilizando como background do Jogo.
-
- - Wikipedia
     
