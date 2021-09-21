@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# Jogo da Vida
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#####imagem do jogo
 
-## Available Scripts
+Projeto criado com o 
 
-In the project directory, you can run:
+## História
 
-### `yarn start`
+O jogo da vida é um autómato celular desenvolvido pelo matemático britânico John Horton Conway em 1970.
+O autor teve a intenção de reproduzir, através de regras simples, as alterações e mudanças em grupos de seres vivos, tendo aplicações em diversas áreas da ciência. Para conhecer um pouco mais sobre a história do jogo clique [aqui](https://pt.wikipedia.org/wiki/Jogo_da_vida).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Regras
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+As regras são simples:
 
-### `yarn test`
+1. Qualquer célula viva com menos de dois vizinhos vivos morre de solidão.
+2. Qualquer célula viva com mais de três vizinhos vivos morre de superpopulação.
+3. Qualquer célula morta com exatamente três vizinhos vivos se torna uma célula viva.
+4. Qualquer célula viva com dois ou três vizinhos vivos continua no mesmo estado para a próxima geração.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Como Jogar
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### - Demo Online
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Colocar o link
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### - Localmente
 
-### `yarn eject`
+Clone o projeto em sua máquina, e execute o seguinte comando na pasta do projeto (Ao iniciar pela primeira vez):
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+ npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+O comando acima irá baixar as dependências necessárias para a execução do jogo.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Depois para iniciar o projeto, execute o comando
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+ npm start
+```
 
-## Learn More
+Se caso você venha utilizar o gerenciador de Pacotes **Yarn**, basta alterar para os comandos:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+ yarn
+ yarn start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Ao executar os comandos acima será aberto uma janela no navagador padrão no link [http://localhost:3000](http://localhost:3000) 
+
+
+### Créditos
+ - Ben Awad, pelo css utilizado na grid, abordado em seu canal no [Youtube](https://www.youtube.com/watch?v=DvVt11mPuM0).
+
+ - UIGradients, degradê [Cool Blues](https://uigradients.com/#CoolBlues) utilizando como background do Jogo.
+
+ - Wikipedia
+    
