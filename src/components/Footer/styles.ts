@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 
 interface IButtonProps {
-  design?: "start" | "stop" | "clean"
+  design?: "start" | "stop" | "clean" | "random"
 }
 
 export const Container = styled.footer`
-  margin-top: 15px;
+  margin: 15px 15px;
   height: 56px;
   display: flex;
   justify-content: center;
@@ -20,9 +20,11 @@ const buttonTypeVariations = {
     background-color: #ee4035;
   `,
   clean: css`
-    /* background-color: #ffcc5c; */
     background-color:  #708090;
   `,
+  random: css`
+  background-color:  #0077b6;
+`,
 }
 
 export const Button = styled.button<IButtonProps>`
@@ -36,7 +38,7 @@ export const Button = styled.button<IButtonProps>`
   cursor: pointer;
   display: inline-flex;
   font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
@@ -50,7 +52,7 @@ export const Button = styled.button<IButtonProps>`
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  width: auto;
+  width: 180px;
 
   ${props => buttonTypeVariations[props.design || "start"]}
 

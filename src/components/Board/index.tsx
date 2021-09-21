@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import ItemBoard from "../ItemBoard";
 import { Container, Grid } from "./styles";
-import { create2DArray, copyGrid } from "../../utils";
-import { useGame } from "../../hooks/game";
+import { create2DArray, createRandom2DArray, copyGrid } from "../../utils";
+import { useGame } from "../../context/game";
 
 const Board: React.FC = ({ children }) => {
   const width = 1400;
@@ -11,12 +11,10 @@ const Board: React.FC = ({ children }) => {
   const numberOfRows = height / sizeItemBoard;
   const numberOfColumns = width / sizeItemBoard;
   const [grid, setGrid] = useState(() => {
-    return create2DArray(numberOfRows, numberOfColumns);
+    return createRandom2DArray(numberOfRows, numberOfColumns);
   });
 
-  const [running, setRunning] = useState(false);
-  const { isStarted } = useGame();
-
+  const { isStarted, isClean, setClean, isFilled, setFilled } = useGame();
 
   const countNeighbors = useCallback((
     grid: Array<any>,
@@ -43,7 +41,7 @@ const Board: React.FC = ({ children }) => {
     return sum;
   }, [numberOfRows, numberOfColumns]);
 
-  const runSimulation = useCallback(() => {
+  const runGame = useCallback(() => {
     let newGrid = JSON.parse(JSON.stringify(grid));
     for (let i = 0; i < numberOfRows; i++) {
       for (let j = 0; j < numberOfColumns; j++) {
@@ -61,11 +59,29 @@ const Board: React.FC = ({ children }) => {
   }, [grid, countNeighbors, numberOfRows, numberOfColumns]);
 
   useEffect(() => {
+    if (isFilled) {
+      const newGrid = createRandom2DArray(numberOfRows, numberOfColumns);
+      setGrid(newGrid);
+      setFilled(!isFilled);
+    }
+  }, [isFilled, setFilled, numberOfRows, numberOfColumns]);
+
+  useEffect(() => {
+    if (isClean) {
+      const newGrid = create2DArray(numberOfRows, numberOfColumns)
+      setGrid(newGrid);
+      setClean(!isClean);
+    }
+  }, [isClean, setClean, numberOfRows, numberOfColumns])
+
+  useEffect(() => {
     if (isStarted) {
-      const intervalId = setInterval(runSimulation, 100)
+      const intervalId = setInterval(runGame, 100)
       return () => clearInterval(intervalId);
     }
-  }, [isStarted, runSimulation])
+  }, [isStarted, runGame])
+
+
 
 
   const handleCellGridClick = (indexRow: number, indexColumn: number) => {
