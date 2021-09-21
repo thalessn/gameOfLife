@@ -24,7 +24,7 @@ As regras são simples:
 
 #### - Demo Online
 
-Inserir link
+Clique [aqui](https://thalessn.github.io/gameoflife/) para acessar.
 
 #### - Localmente
 
